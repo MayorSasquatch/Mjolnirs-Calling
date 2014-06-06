@@ -6,7 +6,7 @@ public class CylinderRotate : MonoBehaviour {
 	public float startSpeed;
 	public float speedCap;
 	public float speedIncreaseRate;
-	float curSpeed;
+	public static float curSpeed;
 	float rotation;
 
 	void Start () {

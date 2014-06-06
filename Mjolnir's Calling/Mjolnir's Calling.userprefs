@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectSpawn.cs">
+    <Files>
+      <File FileName="Assets\Scripts\HammerMove.cs" Line="19" Column="65" />
+      <File FileName="Assets\Scripts\ObjectSpawn.cs" Line="36" Column="25" />
+      <File FileName="Assets\Scripts\CylinderRotate.cs" Line="25" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
