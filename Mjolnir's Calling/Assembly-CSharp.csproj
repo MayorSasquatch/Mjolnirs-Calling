@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CylinderRotate.cs" />
      <Compile Include="Assets\Scripts\HammerMove.cs" />
+     <Compile Include="Assets\Scripts\ObjectDestroy.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawn.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
