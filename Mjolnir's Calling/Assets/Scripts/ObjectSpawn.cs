@@ -75,9 +75,18 @@ public class ObjectSpawn : MonoBehaviour {
 	float[] objProbs = {80, 0, 0, 10, 5, 5}; //Object spawn probabilities
 	float[] cumProbs = new float[6]; //Cumulative object spawn probabilities
 
+	//Function to adjust spawn probabilities depending on wave number
 	void waveAdjust (int waveNum) {
 
-		if(waveNum <= 20) updateProbs(-1, 1, 0, 0, 0, 0);
+		if(waveNum <= 20) updateProbs(-1, 1, 0, 0, 0, 0);	// 60, 20, 0, 10, 5, 5
+
+		else if(waveNum <= 40) updateProbs(-1.5, 0.5, 1, 0, 0, 0);	// 30, 30, 20, 10, 5, 5
+
+		else if (waveNum <= 60) updateProbs(-1, 0.75, 0.25, 0, 0, 0);	// 10, 45, 25, 10, 5, 5
+
+		else if (waveNum <= 95) updateProbs(0, -1, 1, 10, 5, 5);	// 10, 10, 60, 10, 5, 5
+
+		else if (waveNum <= 100) updateProbs(0, 0, 0, -1, -0.5, 1.5); // 10, 10, 60, 5, 2.5, 12.5
 	}
 
 	//Function to update the object spawn probabilities
