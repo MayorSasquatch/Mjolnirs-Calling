@@ -48,7 +48,7 @@ public class ObjectSpawn : MonoBehaviour {
 	}
 
 	//Function that spawns object groups (waves)
-	void spawnGroup () {
+	public void spawnGroup () {
 		int[] occupied = {0, 0, 0, 0}; //Array to store which columns are already occupied
 		powerUpSpawned = false;	//Set power up spawned boolean to false for start of this wave
 
@@ -80,13 +80,13 @@ public class ObjectSpawn : MonoBehaviour {
 
 		if(waveNum <= 20) updateProbs(-1, 1, 0, 0, 0, 0);	// 60, 20, 0, 10, 5, 5
 
-		else if(waveNum <= 40) updateProbs(-1.5, 0.5, 1, 0, 0, 0);	// 30, 30, 20, 10, 5, 5
+		else if(waveNum <= 40) updateProbs(-1.5f, 0.5f, 1, 0, 0, 0);	// 30, 30, 20, 10, 5, 5
 
-		else if (waveNum <= 60) updateProbs(-1, 0.75, 0.25, 0, 0, 0);	// 10, 45, 25, 10, 5, 5
+		else if (waveNum <= 60) updateProbs(-1, 0.75f, 0.25f, 0, 0, 0);	// 10, 45, 25, 10, 5, 5
 
 		else if (waveNum <= 95) updateProbs(0, -1, 1, 10, 5, 5);	// 10, 10, 60, 10, 5, 5
 
-		else if (waveNum <= 100) updateProbs(0, 0, 0, -1, -0.5, 1.5); // 10, 10, 60, 5, 2.5, 12.5
+		else if (waveNum <= 100) updateProbs(0, 0, 0, -1, -0.5f, 1.5f); // 10, 10, 60, 5, 2.5, 12.5
 	}
 
 	//Function to update the object spawn probabilities
@@ -119,7 +119,7 @@ public class ObjectSpawn : MonoBehaviour {
 		for(int i=0; i<6; i++){
 			if(prob <= cumProbs[i]) return i;
 		}
-
+		return 0;
 	}
 
 }
