@@ -14,7 +14,7 @@ public class LokiScript : MonoBehaviour {
 	void Update () {
 		time += Time.deltaTime;
 		ttime  += Time.deltaTime;
-		print(ttime + "  " + time);
+		//print(ttime + "  " + time);
 		if(HammerMove.loki == true && !on){
 			spin();
 			on = true;
