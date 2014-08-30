@@ -4,7 +4,7 @@ using System.Collections;
 public class HammerMove : MonoBehaviour {
 	float xatstart = 0;
 	float yatstart = 0;
-	
+	public static int lightning = 0;
 
 	
 	Vector3 Move;
@@ -69,8 +69,21 @@ public class HammerMove : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Object")
 		{
-			print ("HIT OBJECT");
-			player_hp -= 50;
+			if(col.transform.name == "object6(Clone)"){
+				HammerMove.loki = true;
+			}
+			else if(col.transform.name == "object5(Clone)"){
+				lightning = lightning <3 ? 1 : 0;
+
+			}
+			else if(col.transform.name == "object4(Clone)"){
+				player_hp += 30;
+				if(player_hp > 100)player_hp = 100;
+			}
+			else{
+				print ("HIT OBJECT");
+				player_hp -= 30;
+			}
 		}
 
 
@@ -95,6 +108,6 @@ public class HammerMove : MonoBehaviour {
 		/*
 		if(player_hp == 0)
 			UnityEditor.EditorApplication.isPlaying = false;*/
-		accelerometorControls();
+		//accelerometorControls();
 	}
 }

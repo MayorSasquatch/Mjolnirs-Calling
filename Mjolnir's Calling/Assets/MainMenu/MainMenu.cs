@@ -8,6 +8,13 @@ public class MainMenu : MonoBehaviour {
 	
 	public GameObject mainButtons;
 	public GameObject playEmpty;
+
+	public GameObject playRock;
+	public GameObject creditRock;
+
+	public GameObject playText;
+	public GameObject creditText;
+
 	//public GameObject optionsEmpty;
 	public GameObject creditsEmpty;
 	
@@ -30,7 +37,8 @@ public class MainMenu : MonoBehaviour {
 	private void PlayButton()
 	{
 		print ("Play");
-		mainButtons.SetActive(false);
+		Application.LoadLevel("Game");
+		//mainButtons.SetActive(false);
 		//playEmpty.SetActive(true);
 	}
 	/*
@@ -47,15 +55,37 @@ public class MainMenu : MonoBehaviour {
 		mainButtons.SetActive(false);
 		creditsEmpty.SetActive(true);
 	}
-	
+
+
+	void StartPlayFunction()
+	{
+		this.currentGUIMethod = PlayButton;
+	}
+	void StartCreditFunction()
+	{
+		this.currentGUIMethod = CreditsButton;
+	}
 	void Update()
 	{
 		if(pressed_Button == "Play")
 		{
-			this.currentGUIMethod = PlayButton;
-		}else if(pressed_Button == "Credits")
+
+			if(playText.renderer.material.color.a > 0)
+				playText.renderer.material.color -= new Color(0,0,0,.075f);
+			playRock.GetComponent<Animator>().SetTrigger("Break");
+	
+			Invoke("StartPlayFunction", .35f);
+			//this.currentGUIMethod = PlayButton;
+		}
+		else if(pressed_Button == "Credits")
 		{
-			this.currentGUIMethod = CreditsButton;
+
+			if(creditText.renderer.material.color.a > 0)
+				creditText.renderer.material.color -= new Color(0,0,0,.075f);
+			creditRock.GetComponent<Animator>().SetTrigger("Break");
+
+			Invoke("StartCreditFunction", .35f);
+			//this.currentGUIMethod = CreditsButton;
 		}
 		
 		if(Input.GetKeyDown(KeyCode.Escape))

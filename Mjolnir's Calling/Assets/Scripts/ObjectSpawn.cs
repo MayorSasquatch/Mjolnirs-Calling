@@ -5,6 +5,7 @@ public class ObjectSpawn : MonoBehaviour {
 
 	public GameObject[] objectTypes;
 
+	GameObject[,] objectPool;
 	//Coordinates and angles for objects to spawn at on the cylinder
 	float[] xCoord = {30, 10, -10, -30};
 	float[] yCoord = {-60, 60*Mathf.Sin(300*Mathf.Deg2Rad), 60*Mathf.Sin(330*Mathf.Deg2Rad)};
@@ -23,6 +24,12 @@ public class ObjectSpawn : MonoBehaviour {
 		waveCount = 0;
 		degUntilNextGroup = 0;
 		degUntilNextWave = 330;
+		objectPool = new GameObject[objectTypes.Length,6];
+		for(int a = 0 ; a< objectTypes.Length; a++){
+			for(int b = 0 ; b < 6 ; b++){
+				objectPool[a,b] = (GameObject)Instantiate(objectTypes[a]);
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -44,7 +51,7 @@ public class ObjectSpawn : MonoBehaviour {
 			waveAdjust(waveCount);
 			degUntilNextWave += 180;
 		}
-		Debug.Log(waveCount);
+		//Debug.Log(waveCount);
 
 	}
 
@@ -66,10 +73,23 @@ public class ObjectSpawn : MonoBehaviour {
 			occupied[column] = 1; //Set chosen column to occupied
 
 			//Spawn the chosen object and set its parent to the cylinder
-			GameObject objs = (GameObject)Instantiate(objectTypes[determineObject()], new Vector3(xCoord[column],yCoord[row],zCoord[row]), Quaternion.Euler(angle[row],0,0));
+			//GameObject objs = (GameObject)Instantiate(objectTypes[determineObject()], new Vector3(xCoord[column],yCoord[row],zCoord[row]), Quaternion.Euler(angle[row],0,0));
+			int temp = determineObject();
+			GameObject objs =  objectPool[temp,poolSearch(temp)];
+			objs.transform.position = new Vector3(xCoord[column],yCoord[row],zCoord[row]);
+			objs.transform.rotation = Quaternion.Euler(angle[row],0,0);
 			objs.transform.parent = this.transform;
 
 		}
+	}
+	int poolSearch(int col){
+		for(int a = 0; a < 6; a++){
+			//print(a + "  damn");
+			if(objectPool[col, a].transform.parent == null){
+				return a;
+			}
+		}
+		return 0;
 	}
 
 	//Probability array locations: {tree, rock, crystal spire, Health power up, Lightning power up, Loki power up}

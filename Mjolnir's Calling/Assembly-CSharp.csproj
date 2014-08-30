@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\MainMenu\ButtonState.cs" />
+     <Compile Include="Assets\MainMenu\FadeText.cs" />
      <Compile Include="Assets\MainMenu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\CylinderRotate.cs" />
      <Compile Include="Assets\Scripts\HammerMove.cs" />
@@ -55,6 +56,7 @@
      <Compile Include="Assets\Scripts\Menu\MoveCredits.cs" />
      <Compile Include="Assets\Scripts\ObjectDestroy.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawn.cs" />
+     <Compile Include="Assets\Scripts\lightning.cs" />
      <Compile Include="Assets\UI\Scripts\FillAmt.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
  <Reference Include="UnityEngine.UI">

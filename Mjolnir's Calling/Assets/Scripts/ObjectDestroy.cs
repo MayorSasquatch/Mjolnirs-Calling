@@ -13,8 +13,12 @@ public class ObjectDestroy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		degUntilDestroy -= CylinderRotate.curSpeed;
+		if(this.transform.parent != null)degUntilDestroy -= CylinderRotate.curSpeed;
 
-		if(degUntilDestroy <= 0) Destroy(this.gameObject);
+		if(degUntilDestroy <= 0) {
+			degUntilDestroy = 330;
+			this.transform.parent = null;
+			this.transform.position = new Vector3(0,-300, 0);
+		} 
 	}
 }

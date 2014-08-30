@@ -31,7 +31,7 @@ public class LokiScript : MonoBehaviour {
 
 
 
-		if(ttime > 5f && ttime < 6f){HammerMove.loki = true;}
+		//if(ttime > 5f && ttime < 6f){HammerMove.loki = true;}
 	}
 
 	void spin(){
