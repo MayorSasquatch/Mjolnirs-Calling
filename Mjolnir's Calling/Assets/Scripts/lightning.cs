@@ -14,6 +14,7 @@ public class lightning : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		print (HammerMove.lightning);
 		if(HammerMove.lightning > 0){
 			HammerMove.lightning--;
 		//print("blah");

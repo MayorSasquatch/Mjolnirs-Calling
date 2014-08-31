@@ -82,6 +82,7 @@ public class ObjectSpawn : MonoBehaviour {
 
 		}
 	}
+	//Searches the pool of the indicated object for a unused clone
 	int poolSearch(int col){
 		for(int a = 0; a < 6; a++){
 			//print(a + "  damn");
@@ -93,7 +94,7 @@ public class ObjectSpawn : MonoBehaviour {
 	}
 
 	//Probability array locations: {tree, rock, crystal spire, Health power up, Lightning power up, Loki power up}
-	float[] objProbs = {27, 27, 27, 9, 5, 5}; //Object spawn probabilities
+	float[] objProbs = {0, 27, 54, 81, 90, 95}; //Object spawn probabilities   27,27,27,9,5,5
 	float[] cumProbs = new float[6]; //Cumulative object spawn probabilities
 
 	//Function to adjust spawn probabilities depending on wave number
@@ -102,9 +103,9 @@ public class ObjectSpawn : MonoBehaviour {
 		if(waveNum == 10) numObj++;
 		else if(waveNum == 20) numObj++;
 
-		if(waveNum > 20 && waveNum <= 60) updateProbs(-0.1f, 0, 0.1f);
+		if(waveNum > 20 && waveNum <= 60) updateProbs(0.1f, 0, -0.1f);
 
-		else if(waveNum <= 70) updateProbs(0, -0.1f, 0.1f);
+		else if(waveNum <= 70) updateProbs(0, 0.1f, -0.1f);
 		
 	}
 
@@ -116,12 +117,17 @@ public class ObjectSpawn : MonoBehaviour {
 		objProbs[5] += pULoki;
 
 		//Update cumulative object spawn probabilities
+	 	/*
 		for(int i=3; i<6; i++){
 			cumProbs[i] = objProbs[i];
 
 			for(int j=i-1; j>=0; j--)
 				cumProbs[i] += objProbs[j];
 		}
+		*/
+
+		//trying a diferent aproach to davids method
+
 	}
 
 	//Function to determine what object to spawn
@@ -130,10 +136,13 @@ public class ObjectSpawn : MonoBehaviour {
 		//If a power up has not been spawned, include its cumulative prob in the range. If one has been spawned, exclude it from the range
 		float prob;
 		if(!powerUpSpawned) prob = Random.Range(0, 100);
-		else prob = Random.Range(0, 81);
-
-		for(int i=0; i<6; i++){
-			if(prob <= cumProbs[i]) return i;
+		else prob = Random.Range(0, 80);
+		powerUpSpawned = prob > 80 ? true : false;
+		for(int i=5; i >=0; i--){
+			if(prob >= objProbs[i]){
+				powerUpSpawned = i > 2 ? true : powerUpSpawned;
+				return i;
+			}
 		}
 		return 0;
 	}
