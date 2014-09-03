@@ -74,6 +74,7 @@ public class HammerMove : MonoBehaviour {
 			}
 			else if(col.transform.name == "object5(Clone)"){
 				lightning += lightning <3 ?  1 : 0;
+				print (lightning);
 
 			}
 			else if(col.transform.name == "object4(Clone)"){

@@ -11,6 +11,8 @@ public class ObjectSpawn : MonoBehaviour {
 	float[] yCoord = {-60, 60*Mathf.Sin(300*Mathf.Deg2Rad), 60*Mathf.Sin(330*Mathf.Deg2Rad)};
 	float[] zCoord = {0, 60*Mathf.Cos(300*Mathf.Deg2Rad), 60*Mathf.Cos(330*Mathf.Deg2Rad)};
 	float[] angle = {180, 150, 120};
+	//float[] angle = {0, 0, 0};
+
 
 	int numObj = 1;	//Number of objects to spawn per group/wave
 	int waveCount; //Number of waves survived
@@ -27,7 +29,7 @@ public class ObjectSpawn : MonoBehaviour {
 		objectPool = new GameObject[objectTypes.Length,6];
 		for(int a = 0 ; a< objectTypes.Length; a++){
 			for(int b = 0 ; b < 6 ; b++){
-				objectPool[a,b] = (GameObject)Instantiate(objectTypes[a]);
+				objectPool[a,b] = (GameObject)Instantiate(objectTypes[a], new Vector3(0,-300, 0), transform.rotation);
 			}
 		}
 	}
