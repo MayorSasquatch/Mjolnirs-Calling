@@ -29,7 +29,7 @@ public class ObjectSpawn : MonoBehaviour {
 		objectPool = new GameObject[objectTypes.Length,6];
 		for(int a = 0 ; a< objectTypes.Length; a++){
 			for(int b = 0 ; b < 6 ; b++){
-				objectPool[a,b] = (GameObject)Instantiate(objectTypes[a], new Vector3(0,-300, 0), transform.rotation);
+				objectPool[a,b] = (GameObject)Instantiate(objectTypes[a]);
 			}
 		}
 	}

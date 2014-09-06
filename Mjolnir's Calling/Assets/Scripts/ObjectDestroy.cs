@@ -4,10 +4,11 @@ using System.Collections;
 public class ObjectDestroy : MonoBehaviour {
 
 	float degUntilDestroy;
-
+	Transform start;
 	// Use this for initialization
 	void Start () {
 		degUntilDestroy = 330;
+		start = this.transform;
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,8 @@ public class ObjectDestroy : MonoBehaviour {
 		if(degUntilDestroy <= 0) {
 			degUntilDestroy = 330;
 			this.transform.parent = null;
-			this.transform.position = new Vector3(0,-300, 0);
+			this.transform.position = start.position;
+			this.transform.rotation = start.rotation;
 		} 
 	}
 }

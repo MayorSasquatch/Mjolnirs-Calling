@@ -37,6 +37,7 @@ public class MainMenu : MonoBehaviour {
 	private void PlayButton()
 	{
 		print ("Play");
+
 		Application.LoadLevel("Game");
 		//mainButtons.SetActive(false);
 		//playEmpty.SetActive(true);
@@ -91,7 +92,8 @@ public class MainMenu : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			pressed_Button = "Main";
-			this.currentGUIMethod = MainButton;
+			//this.currentGUIMethod = MainButton;
+			Application.LoadLevel("MainMenu");
 		}
 		this.currentGUIMethod();
 	}

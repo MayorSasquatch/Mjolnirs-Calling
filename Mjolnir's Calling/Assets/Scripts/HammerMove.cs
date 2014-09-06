@@ -69,15 +69,15 @@ public class HammerMove : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Object")
 		{
-			if(col.transform.name == "object6(Clone)"){
+			if(col.transform.name == "object6"){
 				HammerMove.loki = true;
 			}
-			else if(col.transform.name == "object5(Clone)"){
+			else if(col.transform.name == "object5"){
 				lightning += lightning <3 ?  1 : 0;
 				print (lightning);
 
 			}
-			else if(col.transform.name == "object4(Clone)"){
+			else if(col.transform.name == "object4"){
 				player_hp += 30;
 				if(player_hp > 100)player_hp = 100;
 			}

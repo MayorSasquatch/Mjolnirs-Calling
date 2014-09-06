@@ -18,7 +18,7 @@ public class lightning : MonoBehaviour {
 		if(HammerMove.lightning > 0){
 			HammerMove.lightning--;
 		//print("blah");
-		GameObject[] temp= GameObject.FindGameObjectsWithTag("Object");
+		GameObject[] temp= GameObject.FindGameObjectsWithTag("shell");
 		foreach(GameObject blah in temp){
 			if(blah.transform.parent != null){
 				blah.transform.parent = null;
